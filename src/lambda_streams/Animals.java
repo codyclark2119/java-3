@@ -1,6 +1,8 @@
 package lambda_streams;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
 
 class Animals {
     //This class will be using streams.
@@ -32,6 +34,9 @@ class Animals {
 
     static List<String> capsFirst(List<String> animaList, boolean mutate) {
         //clean up the animals list so that the first letter is capitalized, and all the other letters are lowercased. Use a stream to accomplish this task.  Also, the 2nd parameter of this function is a boolean.  use this boolean 'flag' to determine whether or not to 'mutate' the original animals array stored as a static class field.  if the flag is set to 'true', mutate the animals and return the animals out of the function.  if it is false, create a copy of the animals, perform your stream operations on the copy, and return the copy of animals out of the function, WITHOUT modifying the original animals array.  
+        if(mutate){
+            Stream<String> streamtream = animaList.stream();
+        }
         return animals;
     }
 

@@ -40,7 +40,9 @@ class Numbers {
 
         */
 
+
     }
+
 
     static boolean isOdd(int i) {
         //determine if the value at the index i is odd.  return true if yes, return false if  no.
@@ -66,7 +68,12 @@ class Numbers {
 
     static boolean isPrime(int i) {
          //determine if the value at the index i is a prime number.  return true if yes, return false if no.
-         return false;
+        if(i%2 == 0) return false;
+        for(int n=3; n*n<=i; n+=2){
+            if(i%n==0)
+                return false;
+        }
+        return true;
     }
 
     static int added() {
