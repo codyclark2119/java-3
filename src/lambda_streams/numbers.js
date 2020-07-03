@@ -7,7 +7,7 @@ class Numbers {
     isOdd = (i) => {
         //determine if the value at the index i is odd.  return true if yes, return false if  no.
         console.log("isOdd:");
-        const num = i.toString().split("");
+        const num = this.nums[i].toString().split("");
         if (num[num.length -1] == "1" || num[num.length -1] == "3" || num[num.length -1] == "5"|| num[num.length -1] == "7" || num[num.length -1] == "9" ){
             return true;
         } else {
@@ -18,7 +18,7 @@ class Numbers {
     isEven = (i) => {
         //determine if the value at the index i is even.  return true if yes, return false if  no.
         console.log("isEven:");
-        const num = i.toString().split("");
+        const num = this.nums[i].toString().split("");
         if (num[num.length -1] == "0" || num[num.length -1] == "2" || num[num.length -1] == "4"|| num[num.length -1] == "6" || num[num.length -1] == "8" ){
             return true;
         } else {
@@ -28,6 +28,11 @@ class Numbers {
 
     isPrime = (i) => {
          //determine if the value at the index i is a prime number.  return true if yes, return false if no.
+         if(this.nums[i]%2 == 0) return false;
+         for(let n=3; n*n<=this.nums[i]; n+=2){
+             if(this.nums[i]%n==0)
+                 return false;
+         }
          return false;
     }
 

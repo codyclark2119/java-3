@@ -11,7 +11,8 @@ class Numbers {
     public static void main(String[] args) {
         //Part I :complete the static class methods that have been set up in this Numbers class java file.  Use streams to compute the results wheever possible.
         System.out.println(isOdd(1));
-        System.out.println(isEven(494));
+        System.out.println(isEven(2));
+        System.out.println(isPrime(0));
         System.out.println(added());
         System.out.println(subtracted());
         System.out.println(multipled());
@@ -47,8 +48,9 @@ class Numbers {
     static boolean isOdd(int i) {
         //determine if the value at the index i is odd.  return true if yes, return false if  no.
         System.out.println("isOdd:");
-        String[] num = Integer.toString(i).split("");
-        if (num[num.length -1].equals("1") || num[num.length -1].equals("3") || num[num.length -1].equals("5")|| num[num.length -1].equals("7") || num[num.length -1].equals("9") ){
+        Integer num = nums.get(i);
+        String[] numArr = Integer.toString(num).split("");
+        if (numArr[numArr.length - 1].equals("1") || numArr[numArr.length - 1].equals("3") || numArr[numArr.length - 1].equals("5")|| numArr[numArr.length - 1].equals("7") || numArr[numArr.length - 1].equals("9") ){
             return true;
         } else {
             return false;
@@ -58,8 +60,9 @@ class Numbers {
     static boolean isEven(int i) {
         //determine if the value at the index i is even.  return true if yes, return false if  no.
         System.out.println("isEven:");
-        String[] num = Integer.toString(i).split("");
-        if (num[num.length -1].equals("0") || num[num.length -1].equals("2") || num[num.length -1].equals("4")|| num[num.length -1].equals("6") || num[num.length -1].equals("8") ){
+        Integer num = nums.get(i);
+        String[] numArr = Integer.toString(num).split("");
+        if (numArr[numArr.length - 1].equals("0") || numArr[numArr.length - 1].equals("2") || numArr[numArr.length - 1].equals("4")|| numArr[numArr.length - 1].equals("6") || numArr[numArr.length - 1].equals("8") ){
             return true;
         } else {
             return false;
@@ -68,9 +71,11 @@ class Numbers {
 
     static boolean isPrime(int i) {
          //determine if the value at the index i is a prime number.  return true if yes, return false if no.
-        if(i%2 == 0) return false;
-        for(int n=3; n*n<=i; n+=2){
-            if(i%n==0)
+        System.out.println("isPrime:");
+        Integer num = nums.get(i);
+        if(num%2 == 0) return false;
+        for(int n=3; n*n<=num; n+=2){
+            if(num%n==0)
                 return false;
         }
         return true;
@@ -153,11 +158,9 @@ class Numbers {
     static int append(int n) {
         System.out.println("append:");
         //add a new value to the values list. return that value after adding it to the list.
-        System.out.println("Original array size: " +nums.size());
-        Stream<Integer> numStream = nums.stream();
-        Stream<Integer> addStream = Stream.of(n);
+        System.out.println("Original array size: " + nums.size());
 
-        Stream<Integer> concatStream = Stream.concat(numStream, addStream);
+        Stream<Integer> concatStream = Stream.concat(nums.stream(), Stream.of(n));
 
         List<Integer> newNums = concatStream
                 .collect(Collectors.toList());
