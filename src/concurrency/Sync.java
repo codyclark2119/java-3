@@ -24,7 +24,13 @@ class Sync extends Thread {
     public static void main(String[] args)  {
         Sync syncThread = new Sync("sync thread");
         syncThread.start();
-
+        int printNum = 0;
+        while(syncThread.isAlive()){
+            if(printNum == 0) {
+                System.out.println("Waiting...");
+            }
+            printNum++;
+        }
         System.out.println(syncThread.nums);
         //this prints out an empty list. write some code that will allow the data generated in the syncThread to show up  here.  There is a brute force way and a more sophisticated way.  Either or will work, but strive for sophistication :)
 
